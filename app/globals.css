@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-orin-bg: #080b10;
+  --color-orin-surface: #0d1117;
+  --color-orin-surface-2: #111827;
+  --color-orin-blue: #2563eb;
+  --color-orin-blue-light: #3b82f6;
+  --color-orin-grey-1: #6b7280;
+  --color-orin-grey-2: #9ca3af;
+  --color-orin-grey-3: #d1d5db;
+  --color-orin-white: #f9fafb;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #080b10;
+  color: #f9fafb;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
