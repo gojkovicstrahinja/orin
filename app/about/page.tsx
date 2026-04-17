@@ -38,7 +38,7 @@ export default function AboutPage() {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="py-24 px-6 bg-[#080b10]">
+      <section className="py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
             <p className="text-[#3b82f6] text-sm font-medium tracking-[0.3em] uppercase mb-6">
@@ -58,7 +58,7 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-24 px-6 bg-[#0d1117] border-y border-white/5">
+      <section className="py-24 px-6 border-y border-white/5">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
             <h2 className="text-3xl font-bold text-[#f9fafb] mb-6">Our story</h2>
@@ -89,7 +89,7 @@ export default function AboutPage() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="p-6 rounded-xl border border-white/5 bg-[#080b10] text-center"
+                  className="p-6 rounded-xl border border-white/5 text-center"
                 >
                   <div className="text-3xl font-bold text-[#3b82f6] mb-2">{stat.number}</div>
                   <div className="text-xs text-[#6b7280] tracking-wide">{stat.label}</div>
@@ -101,7 +101,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24 px-6 bg-[#080b10]">
+      <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection className="mb-16">
             <p className="text-[#3b82f6] text-sm font-medium tracking-[0.3em] uppercase mb-4">
@@ -115,7 +115,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {values.map((value, i) => (
               <AnimatedSection key={value.title} delay={i * 0.08}>
-                <div className="p-6 rounded-xl border border-white/5 bg-[#0d1117] h-full">
+                <div className="p-6 rounded-xl border border-white/5 h-full">
                   <div className="w-8 h-px bg-[#2563eb] mb-5" />
                   <h3 className="text-base font-semibold text-[#f9fafb] mb-3">
                     {value.title}
@@ -131,7 +131,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team placeholder */}
-      <section className="py-24 px-6 bg-[#0d1117] border-t border-white/5">
+      <section className="py-24 px-6 border-t border-white/5">
         <div className="max-w-3xl mx-auto text-center">
           <AnimatedSection>
             <p className="text-[#3b82f6] text-sm font-medium tracking-[0.3em] uppercase mb-4">

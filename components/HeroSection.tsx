@@ -7,12 +7,7 @@ const words = ["We", "build", "exceptional", "digital", "experiences."];
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-[#080b10]">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#2563eb]/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-[#3b82f6]/5 rounded-full blur-[80px] pointer-events-none" />
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center">
 
       {/* Grid lines subtle */}
       <div

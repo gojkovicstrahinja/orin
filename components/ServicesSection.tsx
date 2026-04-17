@@ -36,7 +36,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-24 px-6 bg-[#080b10]">
+    <section className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         <AnimatedSection className="text-center mb-16">
           <p className="text-[#3b82f6] text-sm font-medium tracking-[0.3em] uppercase mb-4">

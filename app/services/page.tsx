@@ -82,7 +82,7 @@ function FAQAccordion() {
       {faqs.map((faq, i) => (
         <div
           key={i}
-          className="border border-white/5 rounded-xl overflow-hidden bg-[#080b10]"
+          className="border border-white/5 rounded-xl overflow-hidden"
         >
           <button
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
@@ -115,8 +115,20 @@ export default function ServicesPage() {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="py-24 px-6 bg-[#080b10]">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="relative py-24 px-6 overflow-hidden">
+        {/* Video background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/background.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay to keep text readable and match site palette */}
+        <div className="absolute inset-0/75" />
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <AnimatedSection>
             <p className="text-[#3b82f6] text-sm font-medium tracking-[0.3em] uppercase mb-6">
               Our Services
@@ -133,11 +145,11 @@ export default function ServicesPage() {
       </section>
 
       {/* Services grid */}
-      <section className="py-24 px-6 bg-[#0d1117]">
+      <section className="py-24 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
           {services.map((service, i) => (
             <AnimatedSection key={service.title} delay={i * 0.1}>
-              <div className="h-full p-8 rounded-xl border border-white/5 bg-[#080b10] hover:border-[#2563eb]/20 transition-all duration-300 group">
+              <div className="h-full p-8 rounded-xl border border-white/5 hover:border-[#2563eb]/20 transition-all duration-300 group">
                 <div className="w-14 h-14 rounded-xl bg-[#2563eb]/10 text-[#3b82f6] flex items-center justify-center mb-6 group-hover:bg-[#2563eb]/20 transition-colors">
                   {service.icon}
                 </div>
@@ -162,7 +174,7 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-6 bg-[#0d1117] border-t border-white/5">
+      <section className="py-24 px-6 border-t border-white/5">
         <div className="max-w-3xl mx-auto">
           <AnimatedSection className="text-center mb-12">
             <p className="text-[#3b82f6] text-sm font-medium tracking-[0.3em] uppercase mb-4">
@@ -177,7 +189,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-[#080b10]">
+      <section className="py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <AnimatedSection>
             <h2 className="text-3xl md:text-4xl font-bold text-[#f9fafb] mb-6">

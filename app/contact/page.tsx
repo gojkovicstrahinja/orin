@@ -35,7 +35,7 @@ const contactDetails = [
 export default function ContactPage() {
   return (
     <div className="pt-16">
-      <section className="py-24 px-6 bg-[#080b10] min-h-screen">
+      <section className="py-24 px-6 min-h-screen">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <AnimatedSection className="mb-16">

@@ -34,10 +34,22 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-[#080b10] text-[#f9fafb]">
+        {/* Global ambient gradient layer — fixed so orbs never clip at section edges */}
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          <div className="absolute top-0 left-0 w-[600px] h-[500px] bg-[#2563eb]/30 rounded-full blur-[120px]" />
+          <div className="absolute top-0 right-0 w-[500px] h-[450px] bg-[#60a5fa]/22 rounded-full blur-[110px]" />
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#3b82f6]/25 rounded-full blur-[130px]" />
+          <div className="absolute top-1/2 left-0 w-[450px] h-[450px] bg-[#60a5fa]/20 rounded-full blur-[110px]" />
+          <div className="absolute top-1/2 right-0 w-[450px] h-[400px] bg-[#93c5fd]/18 rounded-full blur-[110px]" />
+          <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[350px] bg-[#2563eb]/28 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[400px] bg-[#60a5fa]/22 rounded-full blur-[110px]" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[350px] bg-[#93c5fd]/18 rounded-full blur-[100px]" />
+          <div className="absolute bottom-1/4 right-0 w-[350px] h-[350px] bg-[#3b82f6]/20 rounded-full blur-[100px]" />
+        </div>
         <Suspense fallback={null}>
           <Navbar />
         </Suspense>
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 relative z-10">{children}</main>
         <Footer />
       </body>
     </html>
