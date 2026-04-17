@@ -35,7 +35,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col bg-[#080b10] text-[#f9fafb]">
         {/* Global ambient gradient layer — fixed so orbs never clip at section edges */}
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40 md:opacity-100">
           <div className="absolute top-0 left-0 w-[600px] h-[500px] bg-[#2563eb]/30 rounded-full blur-[120px]" />
           <div className="absolute top-0 right-0 w-[500px] h-[450px] bg-[#60a5fa]/22 rounded-full blur-[110px]" />
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#3b82f6]/25 rounded-full blur-[130px]" />
