@@ -6,21 +6,18 @@ const testimonials = [
       "Orin rebuilt our entire platform in 8 weeks. The attention to detail was unlike any agency we'd worked with before.",
     name: "Sarah Chen",
     role: "CTO",
-    company: "Meridian",
   },
   {
     quote:
       "They didn't just build what we asked for — they pushed back when something wasn't right and delivered something better.",
     name: "Marcus Webb",
     role: "Founder",
-    company: "Halcyon",
   },
   {
     quote:
       "From the first call to launch day, the process was transparent and stress-free. Exactly what you want in a technical partner.",
     name: "Priya Nair",
     role: "Head of Product",
-    company: "Vertex",
   },
 ];
 
