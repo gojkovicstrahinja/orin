@@ -67,7 +67,7 @@ export default function TestimonialsSection() {
                   <div>
                     <p className="text-sm font-medium text-[#f9fafb]">{t.name}</p>
                     <p className="text-xs text-[#6b7280]">
-                      {t.role}, {t.company}
+                      {t.role}
                     </p>
                   </div>
                 </div>
