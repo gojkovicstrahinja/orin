@@ -46,23 +46,25 @@ export default function Navbar() {
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative text-sm font-medium tracking-wide transition-colors duration-200 ${
-                  isActive
-                    ? "text-[#f9fafb]"
-                    : "text-[#9ca3af] hover:text-[#f9fafb]"
-                }`}
-              >
-                {link.label}
-                {isActive && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-[#3b82f6]"
-                  />
-                )}
-              </Link>
+              <motion.div key={link.href} className="relative" whileHover="hover">
+                <Link
+                  href={link.href}
+                  className={`relative text-sm font-medium tracking-wide transition-colors duration-200 ${
+                    isActive
+                      ? "text-[#f9fafb]"
+                      : "text-[#9ca3af] hover:text-[#f9fafb]"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-px bg-[#3b82f6]"
+                  variants={{
+                    hover: { width: "100%", transition: { duration: 0.25, ease: "easeOut" } },
+                  }}
+                  style={{ width: isActive ? "100%" : 0 }}
+                />
+              </motion.div>
             );
           })}
           <Link
