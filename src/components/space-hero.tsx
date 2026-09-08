@@ -1,21 +1,21 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowUpRight, Pause, Play } from "lucide-react";
-import { mountPlanetScene } from "./planet-scene";
+import { mountStarScene } from "./star-scene";
 
-const worlds = [
+const chapters = [
   {
-    name: "Earth",
+    name: "Build",
     label: "01 / THE FOUNDATION",
     copy: "Distinctive web design. Thoughtful development. A digital home built around your business.",
   },
   {
-    name: "Venus",
+    name: "Design",
     label: "02 / THE POSSIBILITIES",
     copy: "From the first impression to the smallest interaction. We turn ambitious ideas into intuitive experiences.",
   },
   {
-    name: "Mars",
+    name: "Explore",
     label: "03 / THE NEXT CHAPTER",
     copy: "Custom applications, connected systems, and room to grow. Software that takes your business further.",
   },
@@ -26,21 +26,22 @@ export default function SpaceHero() {
   const canvas = useRef<HTMLDivElement>(null);
   const progress = useRef(0);
   const motion = useRef(true);
+  const pausePreference = useRef(false);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   useEffect(() => {
     const el = section.current!;
     const media = matchMedia("(prefers-reduced-motion: reduce)");
-    motion.current = !media.matches;
+    motion.current = !media.matches && !pausePreference.current;
     let dispose: (() => void) | undefined;
     let cancelled = false;
-    mountPlanetScene(canvas.current!, progress, motion)
+    mountStarScene(canvas.current!, progress, motion)
       .then((cleanup) => {
         if (cancelled) cleanup();
         else dispose = cleanup;
       })
       .catch(() => {
-        /* Keep the CSS planet fallback if WebGL cannot initialize. */
+        /* Keep the static CSS starfield if WebGL cannot initialize. */
       });
     const update = () => {
       const rect = el.getBoundingClientRect();
@@ -58,7 +59,7 @@ export default function SpaceHero() {
       if (stage.current) stage.current.inert = p > 0.98;
     };
     const changeMotion = () => {
-      motion.current = !media.matches;
+      motion.current = !media.matches && !pausePreference.current;
     };
     update();
     addEventListener("scroll", update, { passive: true });
@@ -72,7 +73,7 @@ export default function SpaceHero() {
       media.removeEventListener("change", changeMotion);
     };
   }, []);
-  function goToWorld(index: number) {
+  function goToChapter(index: number) {
     const el = section.current!;
     window.scrollTo({
       top:
@@ -88,11 +89,11 @@ export default function SpaceHero() {
       id="top"
       ref={section}
       className="space-journey"
-      aria-label="Explore Orin’s world"
+      aria-label="Explore the Orin starfield"
     >
       <div className="space-stage" ref={stage}>
-        <div ref={canvas} className="planet-canvas" aria-hidden="true">
-          <div className="planet-fallback" />
+        <div ref={canvas} className="star-canvas" aria-hidden="true">
+          <div className="star-fallback" />
         </div>
         <div className="space-shade" />
         <div className="hero-copy">
@@ -100,10 +101,13 @@ export default function SpaceHero() {
           <h1>
             A world of <em>possibility.</em>
           </h1>
-          <div className="planet-caption" key={active}>
-            <span className="world-label">{worlds[active].label}</span>
-            <h2>{worlds[active].name}</h2>
-            <p>{worlds[active].copy}</p>
+          <div className="hero-star-window" aria-hidden="true" />
+          <div className="hero-manifesto" aria-label="Build. Design. Explore.">
+            <span /> BUILD <b>•</b> DESIGN <b>•</b> EXPLORE <span />
+          </div>
+          <div className="star-caption" key={active}>
+            <span className="chapter-label">{chapters[active].label}</span>
+            <p>{chapters[active].copy}</p>
           </div>
           <a href="#contact" className="pill-link">
             Let’s build something <ArrowUpRight size={16} />
@@ -122,18 +126,18 @@ export default function SpaceHero() {
             <span>
               SCROLL TO EXPLORE
               <br />
-              <small>From possibility to purpose</small>
+              <small>A journey through the stars</small>
             </span>
           </a>
-          <div className="world-tabs" aria-label="Choose a planet">
-            {worlds.map((world, i) => (
+          <div className="chapter-tabs" aria-label="Choose a journey chapter">
+            {chapters.map((chapter, i) => (
               <button
-                key={world.name}
-                onClick={() => goToWorld(i)}
+                key={chapter.name}
+                onClick={() => goToChapter(i)}
                 aria-pressed={active === i}
               >
                 <span>0{i + 1}</span>
-                {world.name}
+                {chapter.name}
                 <i />
               </button>
             ))}
@@ -141,11 +145,13 @@ export default function SpaceHero() {
           <button
             className="motion-button"
             onClick={() => {
-              motion.current = paused;
+              pausePreference.current = !paused;
+              motion.current = paused && !matchMedia("(prefers-reduced-motion: reduce)").matches;
               setPaused(!paused);
             }}
+            aria-pressed={paused}
             aria-label={
-              paused ? "Resume planet rotation" : "Pause planet rotation"
+              paused ? "Resume star animation" : "Pause star animation"
             }
           >
             {paused ? <Play size={14} /> : <Pause size={14} />}
