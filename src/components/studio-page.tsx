@@ -9,6 +9,7 @@ import {
   Layers,
   Workflow,
 } from "lucide-react";
+import StarMark from "@/components/star-mark";
 const services = [
   {
     number: "01",
@@ -86,7 +87,7 @@ export default function StudioPage() {
     const body = encodeURIComponent(
       `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nInterested in: ${data.get("service")}\n\n${data.get("message")}`,
     );
-    window.location.href = `mailto:hello@orin.dev?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@orin.it.com?subject=${subject}&body=${body}`;
     setEmailPrepared(true);
   }
   return (
@@ -203,7 +204,7 @@ export default function StudioPage() {
             <div className="work-visual tech-concept">
               <div className="mock-nav">
                 <b>
-                  nexus<span className="nexus-symbol">✳</span>
+                  nexus<StarMark className="nexus-symbol" />
                 </b>
                 <span>DESIGNED TO CONNECT ↗</span>
               </div>
@@ -387,8 +388,8 @@ export default function StudioPage() {
                 <br />
                 We’d love to hear it.
               </p>
-              <a className="contact-email" href="mailto:hello@orin.dev">
-                hello@orin.dev <ArrowUpRight size={25} />
+              <a className="contact-email" href="mailto:info@orin.it.com">
+                info@orin.it.com <ArrowUpRight size={25} />
               </a>
             </div>
             <form onSubmit={submit}>
@@ -441,7 +442,7 @@ export default function StudioPage() {
               {emailPrepared && (
                 <p className="form-status" role="status">
                   We’ve asked your email app to open a draft. Send it there to
-                  get in touch. If nothing opened, write to hello@orin.dev.
+                  get in touch. If nothing opened, write to info@orin.it.com.
                 </p>
               )}
             </form>
@@ -451,7 +452,7 @@ export default function StudioPage() {
       <footer className="page-width">
         <div className="footer-top">
           <a href="#top" className="wordmark">
-            orin<span>✳</span>
+            orin<StarMark className="wordmark-star" />
           </a>
           <p>Thoughtful design. Purposeful code.</p>
           <a href="#top" className="back-top">

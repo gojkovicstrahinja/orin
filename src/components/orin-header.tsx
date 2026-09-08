@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import StarMark from "@/components/star-mark";
 export default function OrinHeader() {
   const [open, setOpen] = useState(false);
   return (
@@ -11,7 +12,7 @@ export default function OrinHeader() {
       }}
     >
       <a href="#top" className="wordmark" aria-label="Orin home">
-        orin<span>✳</span>
+        orin<StarMark className="wordmark-star" />
       </a>
       <nav
         className={open ? "main-nav is-open" : "main-nav"}

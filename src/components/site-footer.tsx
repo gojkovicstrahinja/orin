@@ -134,10 +134,10 @@ export default function SiteFooter() {
             <ul className="mt-5 space-y-3 text-zinc-400">
               <li>
                 <a
-                  href="mailto:hello@orin.dev"
+                  href="mailto:info@orin.it.com"
                   className="transition-colors hover:text-blue-400"
                 >
-                  hello@orin.dev
+                  info@orin.it.com
                 </a>
               </li>
               <li>+1 (555) 012-3456</li>

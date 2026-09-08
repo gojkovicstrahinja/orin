@@ -38,7 +38,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `public/credits.txt` — image and texture attribution
 
 The contact form opens the visitor's email app with a draft addressed to the
-existing `hello@orin.dev` address. It does not send or store submissions. Confirm
+existing `info@orin.it.com` address. It does not send or store submissions. Confirm
 that address before launch. Nexus and Flow are explicitly labeled design concepts;
 replace them with real client work when available.
 

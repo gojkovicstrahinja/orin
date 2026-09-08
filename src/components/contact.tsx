@@ -4,7 +4,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Reveal from "@/components/reveal";
 
-const CONTACT_EMAIL = "hello@orin.dev";
+const CONTACT_EMAIL = "info@orin.it.com";
 
 const INFO = [
   { icon: Mail, label: "Email", value: CONTACT_EMAIL },

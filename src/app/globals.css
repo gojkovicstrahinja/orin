@@ -84,10 +84,15 @@ a:focus-visible {
   align-items: center;
   gap: 5px;
 }
-.wordmark span {
-  font-size: 26px;
+/* Sized in em so the star tracks the wordmark's font-size (34px on mobile). */
+.wordmark-star {
+  flex: none;
+  width: auto;
+  height: 0.48em;
   color: #9fbfdf;
-  margin-top: -14px;
+  /* -0.36em == half the cap height at this weight, so the star's centre lands
+     on the cap line of "orin" — where the old glyph sat. */
+  margin-top: -0.36em;
 }
 .main-nav {
   display: flex;
@@ -662,7 +667,8 @@ h2 span {
   letter-spacing: 1px;
 }
 .mock-nav .nexus-symbol {
-  font-size: 19px;
+  width: auto;
+  height: 0.68em;
   margin-left: 3px;
   color: #afd5ff;
 }
