@@ -1,5 +1,6 @@
 "use client";
 import { useState, type FormEvent } from "react";
+import Image from "next/image";
 import {
   ArrowUpRight,
   ArrowUp,
@@ -451,8 +452,14 @@ export default function StudioPage() {
       </section>
       <footer className="page-width">
         <div className="footer-top">
-          <a href="#top" className="wordmark">
-            orin<StarMark className="wordmark-star" />
+          <a href="#top" className="wordmark" aria-label="Orin home">
+            <Image
+              src="/logo.png"
+              alt="Orin"
+              width={129}
+              height={48}
+              className="wordmark-logo"
+            />
           </a>
           <p>Thoughtful design. Purposeful code.</p>
           <a href="#top" className="back-top">

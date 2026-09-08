@@ -77,22 +77,15 @@ a:focus-visible {
   backdrop-filter: blur(16px);
 }
 .wordmark {
-  font-size: 39px;
-  font-weight: 600;
-  letter-spacing: -2px;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
 }
-/* Sized in em so the star tracks the wordmark's font-size (34px on mobile). */
-.wordmark-star {
+/* The logo is 98% star but only 44% letters by height, so it is sized off the
+   letters: 48px puts their cap height level with the old 39px text wordmark. */
+.wordmark-logo {
   flex: none;
   width: auto;
-  height: 0.48em;
-  color: #9fbfdf;
-  /* -0.36em == half the cap height at this weight, so the star's centre lands
-     on the cap line of "orin" — where the old glyph sat. */
-  margin-top: -0.36em;
+  height: 48px;
 }
 .main-nav {
   display: flex;
@@ -1156,8 +1149,8 @@ footer {
     padding-inline: 20px;
     gap: 15px;
   }
-  .wordmark {
-    font-size: 34px;
+  .wordmark-logo {
+    height: 38px;
   }
   .header-contact {
     margin-left: auto;
