@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Orin
+
+Marketing website for **Orin** — a tech studio providing web-design and
+programming solutions. Built with Next.js (App Router), TypeScript and
+Tailwind CSS. Fully static, no backend.
+
+Scroll-driven Three.js planets lead into an editorial studio site inspired by
+the Karelia reference: midnight blue, atmospheric technology imagery, large typography,
+and adjoining service panels. The hero uses real sphere geometry, local surface
+maps, atmospheric shaders, and a travelling camera, with no video playback.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` — start the development server
+- `npm run build` — create an optimized production build
+- `npm run start` — serve the production build
+- `npm run lint` — run ESLint
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/page.tsx` — page composition (all sections)
+- `src/app/layout.tsx` — Hanken Grotesk / Prata fonts and metadata
+- `src/app/globals.css` — responsive midnight-blue editorial design
+- `src/components/orin-header.tsx` — fixed navigation and mobile menu
+- `src/components/space-hero.tsx` — scroll progress, planet navigation, motion control
+- `src/components/planet-scene.ts` — lazy-loaded Three.js scene and GPU cleanup
+- `src/components/studio-page.tsx` — studio, services, concept work, about,
+  process accordion, contact form, and footer
+- `public/textures/` — local Earth, Venus, and Mars maps
+- `public/credits.txt` — image and texture attribution
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The contact form opens the visitor's email app with a draft addressed to the
+existing `hello@orin.dev` address. It does not send or store submissions. Confirm
+that address before launch. Nexus and Flow are explicitly labeled design concepts;
+replace them with real client work when available.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The scene respects reduced-motion preferences, has a pause control and a CSS
+fallback when WebGL is unavailable, caps pixel density, and stops rendering when
+offscreen or when the tab is hidden. Other older section components remain in
+the repository but are not rendered by the current homepage.

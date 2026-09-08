@@ -1,0 +1,8 @@
+Planet surface maps: Solar System Scope, https://www.solarsystemscope.com/textures/
+Licensed under Creative Commons Attribution 4.0: https://creativecommons.org/licenses/by/4.0/
+Earth, Venus, and Mars textures are used on real-time 3D spheres.
+
+Technology artwork and development workspace: AI-generated original visuals
+created for Orin with OpenAI ImageGen. The workspace is an illustrative scene.
+
+Nexus and Flow are original design concepts, not representations of completed client projects.
