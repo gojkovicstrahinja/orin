@@ -37,8 +37,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `public/textures/` — local Earth, Venus, and Mars maps
 - `public/credits.txt` — image and texture attribution
 
-The contact form opens the visitor's email app with a draft addressed to the
-existing `info@orin.it.com` address. It does not send or store submissions. Confirm
+The contact form and email link open a chooser for Gmail, Outlook, or the visitor's
+email app, with a draft addressed to `info@orin.it.com`. Form details are preserved
+in the draft, and the chooser also offers copying the address. The visitor sends
+the message in their chosen email service; the site does not send or store submissions. Confirm
 that address before launch. Nexus and Flow are explicitly labeled design concepts;
 replace them with real client work when available.
 

@@ -1,5 +1,5 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import Image from "next/image";
 import {
   ArrowUpRight,
@@ -78,18 +78,28 @@ const process = [
 ];
 export default function StudioPage() {
   const [step, setStep] = useState(0);
-  const [emailPrepared, setEmailPrepared] = useState(false);
+  const emailDialog = useRef<HTMLDialogElement>(null);
+  const [draft, setDraft] = useState({ subject: "", body: "" });
+  const [copyStatus, setCopyStatus] = useState("");
+  function openEmail(subject = "", body = "") {
+    setDraft({ subject, body });
+    setCopyStatus("");
+    emailDialog.current?.showModal();
+  }
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText("info@orin.it.com");
+      setCopyStatus("Email address copied.");
+    } catch {
+      setCopyStatus("Select and copy this address: info@orin.it.com");
+    }
+  }
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const subject = encodeURIComponent(
-      `A new project for Orin — ${data.get("name")}`,
-    );
-    const body = encodeURIComponent(
-      `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nInterested in: ${data.get("service")}\n\n${data.get("message")}`,
-    );
-    window.location.href = `mailto:info@orin.it.com?subject=${subject}&body=${body}`;
-    setEmailPrepared(true);
+    const subject = `A new project for Orin — ${data.get("name")}`;
+    const body = `Name: ${data.get("name")}\nEmail: ${data.get("email")}\nInterested in: ${data.get("service")}\n\n${data.get("message")}`;
+    openEmail(subject, body);
   }
   return (
     <div className="studio-world">
@@ -389,7 +399,8 @@ export default function StudioPage() {
                 <br />
                 We’d love to hear it.
               </p>
-              <a className="contact-email" href="mailto:info@orin.it.com">
+              <a className="contact-email" href="mailto:info@orin.it.com"
+                onClick={(event) => { event.preventDefault(); openEmail(); }}>
                 info@orin.it.com <ArrowUpRight size={25} />
               </a>
             </div>
@@ -435,21 +446,31 @@ export default function StudioPage() {
                 />
               </label>
               <div className="form-submit">
-                <small>Opens your email app with your project details.</small>
+                <small>Choose where to open your email draft.</small>
                 <button type="submit" className="pill-link">
                   Start a conversation <ArrowUpRight size={16} />
                 </button>
               </div>
-              {emailPrepared && (
-                <p className="form-status" role="status">
-                  We’ve asked your email app to open a draft. Send it there to
-                  get in touch. If nothing opened, write to info@orin.it.com.
-                </p>
-              )}
             </form>
           </div>
         </div>
       </section>
+      <dialog ref={emailDialog} className="email-dialog" aria-labelledby="email-dialog-title">
+        <button type="button" className="email-dialog-close" aria-label="Close email options"
+          onClick={() => emailDialog.current?.close()}>×</button>
+        <h2 id="email-dialog-title">Let’s start a conversation.</h2>
+        <p>Choose your email service. Review and send your message there.</p>
+        <div className="email-options">
+          <a href={`https://mail.google.com/mail/?${new URLSearchParams({ view: "cm", fs: "1", to: "info@orin.it.com", su: draft.subject, body: draft.body })}`}
+            target="_blank" rel="noopener noreferrer">Open Gmail <ArrowUpRight size={16} /></a>
+          <a href={`https://outlook.live.com/mail/0/deeplink/compose?${new URLSearchParams({ to: "info@orin.it.com", subject: draft.subject, body: draft.body })}`}
+            target="_blank" rel="noopener noreferrer">Open Outlook <ArrowUpRight size={16} /></a>
+          <a href={`mailto:info@orin.it.com?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.body)}`}>Open email app <ArrowUpRight size={16} /></a>
+        </div>
+        <p className="email-address">info@orin.it.com</p>
+        <button type="button" className="email-copy" onClick={copyEmail}>Copy email address</button>
+        <p role="status">{copyStatus}</p>
+      </dialog>
       <footer className="page-width">
         <div className="footer-top">
           <a href="#top" className="wordmark" aria-label="Orin home">
