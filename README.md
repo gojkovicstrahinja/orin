@@ -37,11 +37,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `public/textures/` — local Earth, Venus, and Mars maps
 - `public/credits.txt` — image and texture attribution
 
-The contact form and email link open a chooser for Gmail, Outlook, or the visitor's
-email app, with a draft addressed to `info@orin.it.com`. Form details are preserved
-in the draft, and the chooser also offers copying the address. The visitor sends
-the message in their chosen email service; the site does not send or store submissions. Confirm
-that address before launch. Nexus and Flow are explicitly labeled design concepts;
+The contact form POSTs all four fields (name, email, service, and message) to
+[FormSubmit](https://formsubmit.co/), which delivers them to `info@orin.it.com`.
+No SMTP credentials or API key are required. Before launch, submit the form once
+from the site, open the activation email in that inbox (check spam), and confirm
+the endpoint. Then submit another inquiry to verify delivery. Delivery is not
+verified until this activation and inbox check are complete.
+FormSubmit handles CAPTCHA and shows its confirmation page after submission.
+The separate email link offers Gmail, Outlook, an email app, or copying the address.
+Nexus and Flow are explicitly labeled design concepts;
 replace them with real client work when available.
 
 The scene respects reduced-motion preferences, has a pause control and a CSS
